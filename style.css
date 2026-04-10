@@ -111,49 +111,6 @@ body.menu-open { overflow: hidden; }
 
 .nav-links a:hover { color: var(--text); background: rgba(0, 0, 0, 0.03); }
 
-.nav-toggle {
-  display: none;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--text);
-  font-weight: 800;
-  cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s ease;
-}
-
-.nav-toggle:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
-.nav-toggle:active { transform: translateY(0); }
-
-.nav-toggle .icon {
-  width: 18px;
-  height: 14px;
-  position: relative;
-  display: inline-block;
-}
-
-.nav-toggle .icon span {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: currentColor;
-  border-radius: 999px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.nav-toggle .icon span:nth-child(1) { top: 0; }
-.nav-toggle .icon span:nth-child(2) { top: 6px; }
-.nav-toggle .icon span:nth-child(3) { bottom: 0; }
-
-.nav-toggle.open .icon span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-.nav-toggle.open .icon span:nth-child(2) { opacity: 0; }
-.nav-toggle.open .icon span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
 .nav-cta { white-space: nowrap; }
 
 .page {
@@ -393,6 +350,10 @@ body.menu-open { overflow: hidden; }
   .lede { margin-left: auto; margin-right: auto; }
 }
 
+@media (max-width: 900px) {
+  .nav-cta { display: none; }
+}
+
 @media (max-width: 768px) {
   .nav {
     max-width: none;
@@ -402,9 +363,7 @@ body.menu-open { overflow: hidden; }
     top: 10px;
   }
 
-  .nav-toggle { display: none; }
   .nav-links { display: none; }
-  .nav-cta { display: none; }
 
   .page { padding: 70px 16px; }
   .hero { padding: 18px 0 70px; gap: 32px; }
