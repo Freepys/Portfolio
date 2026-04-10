@@ -16,6 +16,18 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 html { scroll-behavior: auto; } /* We handle this in JS for custom offsets */
 
 body {
@@ -30,6 +42,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+body.menu-open { overflow: hidden; }
+
 /* Scrollbar styling */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -42,25 +56,28 @@ body {
   filter: blur(80px);
   opacity: 0.4;
   z-index: -1;
+  pointer-events: none;
 }
 
 .shape-1 { width: 400px; height: 400px; background: #dbeafe; top: -100px; left: -50px; animation: floaty 15s ease-in-out infinite; }
 .shape-2 { width: 350px; height: 350px; background: #ede9fe; bottom: 5%; right: -50px; animation: floaty 18s ease-in-out infinite reverse; }
-.shape-3 { width: 250px; height: 250px; background: #f1f5f9; middle: 50%; left: 30%; animation: floaty 20s ease-in-out infinite; }
+.shape-3 { width: 250px; height: 250px; background: #f1f5f9; top: 50%; left: 30%; transform: translate(-20%, -10%); animation: floaty 20s ease-in-out infinite; }
 
 .nav {
   position: sticky;
-  top: 20px;
+  top: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 24px;
-  max-width: calc(var(--max) - 40px);
+  gap: 12px;
+  padding: 12px 20px;
+  max-width: calc(var(--max) - 32px);
   margin: 0 auto;
   z-index: 100;
+  isolation: isolate;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   box-shadow: var(--shadow-lg);
@@ -78,6 +95,7 @@ body {
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 8px;
 }
 
@@ -92,6 +110,51 @@ body {
 }
 
 .nav-links a:hover { color: var(--text); background: rgba(0, 0, 0, 0.03); }
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text);
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.nav-toggle:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
+.nav-toggle:active { transform: translateY(0); }
+
+.nav-toggle .icon {
+  width: 18px;
+  height: 14px;
+  position: relative;
+  display: inline-block;
+}
+
+.nav-toggle .icon span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  border-radius: 999px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle .icon span:nth-child(1) { top: 0; }
+.nav-toggle .icon span:nth-child(2) { top: 6px; }
+.nav-toggle .icon span:nth-child(3) { bottom: 0; }
+
+.nav-toggle.open .icon span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle.open .icon span:nth-child(2) { opacity: 0; }
+.nav-toggle.open .icon span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.nav-cta { white-space: nowrap; }
 
 .page {
   max-width: var(--max);
@@ -322,6 +385,7 @@ body {
 }
 
 @media (max-width: 1024px) {
+  .page { padding: 80px 18px; }
   .hero { grid-template-columns: 1fr; text-align: center; gap: 40px; }
   .hero-text { order: 2; }
   .avatar-card { order: 1; width: min(320px, 100%); }
@@ -330,8 +394,39 @@ body {
 }
 
 @media (max-width: 768px) {
-  .nav { padding: 8px 16px; }
-  .nav-links { display: none; } /* Hide links on mobile for simplicity, or could add a hamburger */
-  .section { padding: 60px 0; }
+  .nav {
+    max-width: none;
+    width: calc(100% - 16px);
+    padding: 10px 14px;
+    gap: 8px;
+    top: 10px;
+  }
+
+  .nav-toggle { display: none; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+
+  .page { padding: 70px 16px; }
+  .hero { padding: 18px 0 70px; gap: 32px; }
+  .avatar-card { width: min(280px, 100%); }
+  .caption { font-size: 12px; padding: 10px 14px; bottom: -14px; right: -14px; }
+  .section { padding: 56px 0; }
+  .card { padding: 26px; }
+  .card-grid { gap: 16px; }
+  .experience { gap: 14px; }
   .footer { flex-direction: column; gap: 24px; text-align: center; }
+}
+
+@media (max-width: 540px) {
+  .nav { width: calc(100% - 12px); border-radius: 16px; }
+  .logo { font-size: 18px; }
+  .hero-text h1 { font-size: clamp(32px, 9vw, 44px); }
+  .lede { font-size: 16px; }
+  .button { width: 100%; justify-content: center; }
+  .hero-actions { width: 100%; }
+  .meta-row { gap: 8px; }
+  .meta-pill { font-size: 12px; padding: 8px 12px; }
+  .card { padding: 22px; }
+  .pill { font-size: 13px; padding: 8px 14px; }
+  .contact-card { grid-template-columns: 1fr; }
 }

@@ -76,6 +76,7 @@ function initSmoothScroll() {
   });
 }
 
+
 // Initialize all features on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   attachCopyButtons();
