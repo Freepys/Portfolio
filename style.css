@@ -44,8 +44,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body.menu-open { overflow: hidden; }
-
 /* Scrollbar styling */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -404,7 +402,7 @@ body.motion-ready .hero .hero-text {
 }
 
 @media (max-width: 900px) {
-  .nav-cta { display: none; }
+  .nav-cta { display: inline-flex; }
 }
 
 @media (max-width: 768px) {
@@ -417,16 +415,47 @@ body.motion-ready .hero .hero-text {
   }
 
   .nav-links { display: none; }
+  .nav-cta {
+    display: inline-flex;
+    min-height: 44px;
+    padding: 11px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    width: auto;
+  }
 
-  .page { padding: 70px 16px; }
-  .hero { padding: 18px 0 70px; gap: 32px; }
-  .avatar-card { width: min(280px, 100%); }
+  .page { padding: 62px 16px 80px; }
+  .hero { padding: 10px 0 44px; gap: 22px; }
+  .avatar-card { width: min(248px, 100%); }
   .caption { font-size: 12px; padding: 10px 14px; bottom: -14px; right: -14px; }
-  .section { padding: 56px 0; }
-  .card { padding: 26px; }
-  .card-grid { gap: 16px; }
-  .experience { gap: 14px; }
+  .hero-text .eyebrow { margin-bottom: 8px; }
+  .hero-text h1 { margin-bottom: 14px; }
+  .hero-text .lede { margin-bottom: 18px; font-size: 16px; line-height: 1.5; }
+  .hero-actions { margin-bottom: 14px; gap: 10px; }
+  .meta-row { margin-bottom: 10px; }
+  .section { padding: 44px 0; }
+  .section-heading { margin-bottom: 28px; }
+  .card { padding: 22px; }
+  .card-grid { gap: 12px; }
+  .experience { gap: 12px; margin-top: 24px; }
+  .contact-card { gap: 12px; }
+  .project-actions { display: grid; gap: 10px; }
+  .project-actions .button { width: 100%; }
   .footer { flex-direction: column; gap: 24px; text-align: center; }
+
+  .button,
+  .nav-links a,
+  .pill,
+  .meta-pill {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  [data-animate] {
+    transform: translateY(18px) scale(0.99);
+    filter: blur(4px);
+    transition: opacity 600ms var(--ease-apple), transform 600ms var(--ease-apple), filter 450ms var(--ease-smooth);
+  }
 }
 
 @media (max-width: 540px) {
@@ -435,6 +464,13 @@ body.motion-ready .hero .hero-text {
   .hero-text h1 { font-size: clamp(32px, 9vw, 44px); }
   .lede { font-size: 16px; }
   .button { width: 100%; justify-content: center; }
+  .nav .nav-cta {
+    width: auto;
+    min-height: 44px;
+    padding: 11px 10px;
+    font-size: 14px;
+    justify-content: center;
+  }
   .hero-actions { width: 100%; }
   .meta-row { gap: 8px; }
   .meta-pill { font-size: 12px; padding: 8px 12px; }
