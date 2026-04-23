@@ -124,6 +124,47 @@ function initIntroMotion() {
   });
 }
 
+/**
+ * Mobile hamburger menu toggle.
+ */
+function initMobileMenu() {
+  const btn = document.getElementById('hamburger-btn');
+  const menu = document.getElementById('nav-menu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    btn.classList.toggle('active');
+    btn.setAttribute('aria-expanded', isOpen);
+  });
+
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && !btn.contains(e.target)) {
+      menu.classList.remove('open');
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+/**
+ * Sets the copyright year dynamically.
+ */
+function initCopyrightYear() {
+  const el = document.getElementById('copyright-year');
+  if (el) {
+    el.textContent = `${new Date().getFullYear()} Freeperr.`;
+  }
+}
+
 // Initialize all features on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   initIntroMotion();
@@ -131,4 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initSmoothScroll();
   initNavMotion();
+  initMobileMenu();
+  initCopyrightYear();
 });

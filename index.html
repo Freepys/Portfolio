@@ -3,12 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Freeperr | Minecraft & Bots Developer</title>
+  <meta name="description" content="Freeperr - 16-year-old developer specializing in high-performance Paper plugins, Fabric mods, and Discord bots. Crafting tools with intention for your Minecraft community.">
+  <meta name="keywords" content="Minecraft, Paper plugins, Fabric mods, Discord bots, Java, Kotlin, Python, Discord.js, Minecraft developer">
+  <meta name="author" content="Freeperr">
+  <meta name="theme-color" content="#f8fafc">
+  <meta property="og:title" content="Freeperr | Minecraft & Bots Developer">
+  <meta property="og:description" content="16-year-old developer building high-performance Paper plugins, Fabric mods, and Discord bots.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://freeperr.dev">
+  <meta property="og:image" content="https://freeperr.dev/avatar.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Freeperr | Minecraft & Bots Developer">
+  <meta name="twitter:description" content="16-year-old developer building high-performance Paper plugins, Fabric mods, and Discord bots.">
+  <meta name="twitter:image" content="https://freeperr.dev/avatar.png">
+  <link rel="canonical" href="https://freeperr.dev">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="avatar.png">
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Freeperr",
+    "url": "https://freeperr.dev",
+    "image": "https://freeperr.dev/avatar.png",
+    "description": "16-year-old developer specializing in Minecraft development and Discord bots.",
+    "sameAs": [
+      "https://github.com/Freepys",
+      "https://modrinth.com/user/Freepy",
+      "https://youtube.com/@Freeperr"
+    ],
+    "knowsAbout": ["Java", "Kotlin", "Python", "Paper API", "Fabric API", "Discord.js"],
+    "makesOffer": {
+      "@type": "Offer",
+      "description": "Custom Minecraft plugins, Fabric mods, Discord systems, and API utilities"
+    }
+  }
+  </script>
 </head>
 <body>
   <div class="background" aria-hidden="true">
@@ -27,6 +62,11 @@
       <a href="#contact">Contact</a>
     </nav>
     <a class="button primary nav-cta" href="#contact">Let's talk</a>
+    <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </header>
 
   <main class="page">
@@ -34,7 +74,7 @@
       <div class="avatar-card" data-animate>
         <div class="avatar-ring"></div>
         <div class="avatar">
-          <img src="avatar.png" alt="Freeperr Avatar">
+          <img src="avatar.png" alt="Freeperr Avatar" width="380" height="380">
         </div>
         <p class="caption">16 y/o developer</p>
       </div>
@@ -43,7 +83,7 @@
         <h1>Hey, I'm <span class="accent">Freeperr</span></h1>
         <p class="lede">I build high-performance Paper plugins, Fabric mods, and Discord bots. Focused on clean code, stable releases, and fast iterations for your Minecraft community.</p>
         <div class="hero-actions">
-          <a class="button primary" href="https://modrinth.com/plugin/commandblockerplus" target="_blank" rel="noopener noreferrer">Modrinth</a>
+          <a class="button primary" href="https://modrinth.com/user/Freepy" target="_blank" rel="noopener noreferrer">Modrinth</a>
           <button class="button" id="copy-discord" data-handle="Freeperr" data-default="Discord: Freeperr">Discord: Freeperr</button>
           <a class="button ghost" href="https://github.com/Freepys" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
@@ -72,7 +112,7 @@
         <p>CommandBlockerPlus offers highly configurable command blocking, safe defaults, and exhaustive documentation. It's designed to keep your server fair and your staff operations secure without compromising performance.</p>
         <div class="project-actions">
           <a class="button primary" href="https://modrinth.com/plugin/commandblockerplus" target="_blank" rel="noopener noreferrer">View on Modrinth</a>
-          <a class="button ghost" href="https://modrinth.com/plugin/commandblockerplus" target="_blank" rel="noopener noreferrer">Documentation</a>
+          <a class="button ghost" href="https://modrinth.com/user/Freepy" target="_blank" rel="noopener noreferrer">Modrinth Profile</a>
         </div>
       </div>
     </section>
@@ -152,7 +192,7 @@
             <p class="eyebrow">Modrinth</p>
             <p class="logo">Freeperr</p>
           </div>
-          <a class="button ghost" href="https://modrinth.com/user/Freeperr" target="_blank" rel="noopener noreferrer">Visit Profile</a>
+          <a class="button ghost" href="https://modrinth.com/user/Freepy" target="_blank" rel="noopener noreferrer">Visit Profile</a>
         </div>
         <div class="contact-info">
           <div>
@@ -166,10 +206,10 @@
   </main>
 
   <footer class="footer">
-    <p>2025 Freeperr.</p>
+    <p id="copyright-year"></p>
     <div class="nav-links" style="display: flex;">
       <a href="https://github.com/Freepys" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://modrinth.com/user/Freeperr" target="_blank" rel="noopener noreferrer">Modrinth</a>
+      <a href="https://modrinth.com/user/Freepy" target="_blank" rel="noopener noreferrer">Modrinth</a>
       <a href="https://youtube.com/@Freeperr" target="_blank" rel="noopener noreferrer">YouTube</a>
     </div>
   </footer>

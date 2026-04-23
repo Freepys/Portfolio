@@ -405,6 +405,56 @@ body.motion-ready .hero .hero-text {
   .nav-cta { display: inline-flex; }
 }
 
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  margin-left: auto;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 300ms var(--ease-apple), opacity 200ms ease;
+}
+
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav-links.open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 14px;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 8px;
+  box-shadow: var(--shadow-xl);
+  z-index: 200;
+}
+
+.nav-links.open a {
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
 @media (max-width: 768px) {
   .nav {
     max-width: none;
@@ -412,9 +462,11 @@ body.motion-ready .hero .hero-text {
     padding: 10px 14px;
     gap: 8px;
     top: 10px;
+    flex-wrap: wrap;
   }
 
   .nav-links { display: none; }
+  .hamburger { display: flex; }
   .nav-cta {
     display: inline-flex;
     min-height: 44px;
