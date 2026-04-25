@@ -280,6 +280,50 @@ body {
   color: var(--muted);
 }
 
+.scroll-hint {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--muted);
+  box-shadow: var(--shadow);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 90;
+  transition: opacity 280ms var(--ease-smooth), transform 280ms var(--ease-smooth), visibility 280ms var(--ease-smooth);
+}
+
+.scroll-hint.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-hint.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(8px);
+}
+
+.scroll-hint-arrow {
+  font-size: 20px;
+  line-height: 1;
+  animation: hintFloat 1.4s var(--ease-smooth) infinite;
+}
+
+@keyframes hintFloat {
+  0%, 100% { transform: translateY(-1px); }
+  50% { transform: translateY(5px); }
+}
+
 .section { padding: 100px 0; border-top: 1px solid var(--border); }
 .section-heading { margin-bottom: 48px; }
 .section-heading h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; }

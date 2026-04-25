@@ -184,6 +184,36 @@ function initCopyrightYear() {
   }
 }
 
+/**
+ * Shows a subtle down-arrow hint on first screen and hides it on scroll.
+ */
+function initScrollHint() {
+  const hint = document.getElementById('scroll-hint');
+  if (!hint) return;
+
+  const updateHint = () => {
+    if (window.scrollY > 80) {
+      hint.classList.add('hidden');
+      hint.classList.remove('visible');
+    } else {
+      hint.classList.remove('hidden');
+      hint.classList.add('visible');
+    }
+  };
+
+  setTimeout(updateHint, 1200);
+  window.addEventListener('scroll', updateHint, { passive: true });
+
+  hint.addEventListener('click', () => {
+    const target = document.getElementById('work');
+    if (!target) return;
+    const nav = document.querySelector('.nav');
+    const navHeight = nav ? nav.offsetHeight : 0;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+}
+
 // Initialize all features on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   initImageFadeIn();
@@ -194,4 +224,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavMotion();
   initMobileMenu();
   initCopyrightYear();
+  initScrollHint();
 });
