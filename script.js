@@ -214,6 +214,66 @@ function initScrollHint() {
   });
 }
 
+/**
+ * Shows a left-edge recommendation only for fast readers:
+ * reached bottom in under 10 seconds, then hover on left edge.
+ */
+function initQuickBottomPrompt() {
+  const zone = document.getElementById('left-edge-hover-zone');
+  const prompt = document.getElementById('quick-exit-prompt');
+  if (!zone || !prompt) return;
+
+  const pageStart = performance.now();
+  let unlocked = false;
+  let stillTracking = true;
+  let hideTimer = null;
+
+  const reachedBottom = () =>
+    window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+
+  const trackBottomSpeed = () => {
+    if (!stillTracking || unlocked) return;
+
+    const elapsedMs = performance.now() - pageStart;
+    if (elapsedMs > 10000) {
+      stillTracking = false;
+      return;
+    }
+
+    if (reachedBottom()) {
+      unlocked = true;
+      stillTracking = false;
+    }
+  };
+
+  const showPrompt = () => {
+    if (!unlocked) return;
+    if (hideTimer) {
+      clearTimeout(hideTimer);
+      hideTimer = null;
+    }
+    prompt.classList.add('show');
+  };
+
+  const hidePrompt = () => {
+    if (hideTimer) {
+      clearTimeout(hideTimer);
+    }
+    hideTimer = setTimeout(() => {
+      prompt.classList.remove('show');
+      hideTimer = null;
+    }, 180);
+  };
+
+  window.addEventListener('scroll', trackBottomSpeed, { passive: true });
+  trackBottomSpeed();
+
+  zone.addEventListener('mouseenter', showPrompt);
+  zone.addEventListener('mouseleave', hidePrompt);
+  prompt.addEventListener('mouseenter', showPrompt);
+  prompt.addEventListener('mouseleave', hidePrompt);
+}
+
 // Initialize all features on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   initImageFadeIn();
@@ -225,4 +285,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initCopyrightYear();
   initScrollHint();
+  initQuickBottomPrompt();
 });

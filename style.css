@@ -654,3 +654,51 @@ body.motion-ready .hero .hero-text {
 .moved-url a:hover {
   text-decoration: underline;
 }
+
+.left-edge-hover-zone {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 100vh;
+  z-index: 130;
+}
+
+.quick-exit-prompt {
+  position: fixed;
+  left: 16px;
+  bottom: 24px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.9);
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(-18px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 220ms var(--ease-smooth), transform 220ms var(--ease-smooth), visibility 220ms var(--ease-smooth);
+  z-index: 131;
+  font-size: 14px;
+}
+
+.quick-exit-prompt.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.quick-exit-prompt a {
+  color: #93c5fd;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .left-edge-hover-zone,
+  .quick-exit-prompt {
+    display: none;
+  }
+}
