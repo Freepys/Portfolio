@@ -8,6 +8,14 @@
   <meta name="author" content="Freeperr">
   <meta name="theme-color" content="#f8fafc">
   <title>Freeperr. | Dev</title>
+  <script>
+    (function () {
+      var cleanPath = window.location.pathname.replace(/\/+$/, "") || "/";
+      if (cleanPath === "/ryddn") {
+        window.location.replace("https://ryddn.me");
+      }
+    })();
+  </script>
   <meta property="og:title" content="Freeperr | Minecraft & Bots Developer">
   <meta property="og:description" content="16-year-old developer building high-performance Paper plugins, Fabric mods, and Discord bots.">
   <meta property="og:type" content="website">
@@ -75,7 +83,7 @@
       <div class="avatar-card" data-animate>
         <div class="avatar-ring"></div>
         <div class="avatar">
-          <img src="avatar.png" alt="Freeperr Avatar" width="380" height="380">
+          <img src="avatar.png" alt="Freeperr Avatar" width="380" height="380" loading="eager" decoding="async">
         </div>
         <p class="caption">16 y/o developer</p>
       </div>
@@ -208,10 +216,14 @@
 
   <footer class="footer">
     <p id="copyright-year"></p>
-    <div class="nav-links" style="display: flex;">
-      <a href="https://github.com/Freepys" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://modrinth.com/user/Freepy" target="_blank" rel="noopener noreferrer">Modrinth</a>
-      <a href="https://youtube.com/@Freeperr" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <div class="footer-content">
+      <div class="nav-links" style="display: flex;">
+        <a href="https://github.com/Freepys" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://modrinth.com/user/Freepy" target="_blank" rel="noopener noreferrer">Modrinth</a>
+        <a href="https://youtube.com/@Freeperr" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="LICENSE">License</a>
+      </div>
+      <p class="footer-email">Business: <a href="mailto:buisness@freeperr.dev">buisness@freeperr.dev</a></p>
     </div>
   </footer>
   <script src="script.js"></script>

@@ -1,4 +1,23 @@
 /**
+ * Fades in avatar image once it's actually loaded.
+ */
+function initImageFadeIn() {
+  const images = document.querySelectorAll('.avatar img');
+
+  images.forEach((img) => {
+    const reveal = () => requestAnimationFrame(() => img.classList.add('loaded'));
+
+    if (img.complete && img.naturalWidth > 0) {
+      reveal();
+      return;
+    }
+
+    img.addEventListener('load', reveal, { once: true });
+    img.addEventListener('error', () => img.classList.add('loaded'), { once: true });
+  });
+}
+
+/**
  * Handles copy-to-clipboard functionality for social handles.
  */
 function attachCopyButtons() {
@@ -167,6 +186,7 @@ function initCopyrightYear() {
 
 // Initialize all features on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
+  initImageFadeIn();
   initIntroMotion();
   attachCopyButtons();
   initScrollAnimations();
