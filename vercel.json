@@ -1,20 +1,34 @@
 {
   "redirects": [
     {
-      "source": "/license",
-      "destination": "/licence",
+      "source": "/licence",
+      "destination": "/license",
+      "permanent": true
+    },
+    {
+      "source": "/licence/",
+      "destination": "/license",
       "permanent": true
     },
     {
       "source": "/license.html",
-      "destination": "/licence",
+      "destination": "/license",
+      "permanent": true
+    },
+    {
+      "source": "/licence.html",
+      "destination": "/license",
       "permanent": true
     }
   ],
   "rewrites": [
     {
-      "source": "/licence",
-      "destination": "/licence/index.html"
+      "source": "/license",
+      "destination": "/license.html"
+    },
+    {
+      "source": "/license/",
+      "destination": "/license.html"
     }
   ]
 }
