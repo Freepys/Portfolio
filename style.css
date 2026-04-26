@@ -380,6 +380,12 @@ body {
   color: var(--muted);
 }
 
+.footer-copyright {
+  display: grid;
+  gap: 2px;
+  line-height: 1.35;
+}
+
 /* Animations */
 [data-animate] {
   opacity: 0;

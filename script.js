@@ -174,15 +174,6 @@ function initMobileMenu() {
   });
 }
 
-/**
- * Sets the copyright year dynamically.
- */
-function initCopyrightYear() {
-  const el = document.getElementById('copyright-year');
-  if (el) {
-    el.textContent = `${new Date().getFullYear()} Freeperr.`;
-  }
-}
 
 /**
  * Shows a subtle down-arrow hint on first screen and hides it on scroll.
@@ -283,7 +274,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initNavMotion();
   initMobileMenu();
-  initCopyrightYear();
   initScrollHint();
   initQuickBottomPrompt();
 });
