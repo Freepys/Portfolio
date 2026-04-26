@@ -44,6 +44,25 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(15, 23, 42, 0.08);
+  z-index: 220;
+  pointer-events: none;
+}
+
+.scroll-progress-fill {
+  width: 100%;
+  height: 100%;
+  background: #1e293b;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -66,7 +85,7 @@ body {
 
 .nav {
   position: sticky;
-  top: 16px;
+  top: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -125,7 +144,7 @@ body {
 .page {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 80px 20px;
+  padding: 104px 20px;
 }
 
 .hero {
@@ -462,7 +481,7 @@ body.motion-ready .hero .hero-text {
 }
 
 @media (max-width: 1024px) {
-  .page { padding: 80px 18px; }
+  .page { padding: 98px 18px; }
   .hero { grid-template-columns: 1fr; text-align: center; gap: 40px; }
   .hero-text { order: 2; }
   .avatar-card { order: 1; width: min(320px, 100%); }
@@ -545,7 +564,7 @@ body.motion-ready .hero .hero-text {
     width: auto;
   }
 
-  .page { padding: 62px 16px 80px; }
+  .page { padding: 74px 16px 80px; }
   .hero { padding: 10px 0 44px; gap: 22px; }
   .avatar-card { width: min(248px, 100%); }
   .caption { font-size: 12px; padding: 10px 14px; bottom: -14px; right: -14px; }
@@ -621,7 +640,7 @@ body.motion-ready .hero .hero-text {
   }
 
   .page {
-    padding: 56px 12px 72px;
+    padding: 66px 12px 72px;
   }
 
   .hero {

@@ -206,6 +206,25 @@ function initScrollHint() {
 }
 
 /**
+ * Renders a minimal top progress bar based on page scroll depth.
+ */
+function initScrollProgress() {
+  const fill = document.getElementById('scroll-progress-fill');
+  if (!fill) return;
+
+  const update = () => {
+    const scrollTop = window.scrollY || window.pageYOffset;
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = scrollable > 0 ? Math.min(Math.max(scrollTop / scrollable, 0), 1) : 0;
+    fill.style.transform = `scaleX(${ratio})`;
+  };
+
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+}
+
+/**
  * Shows a left-edge recommendation only for fast readers:
  * reached bottom in under 10 seconds, then hover on left edge.
  */
@@ -274,6 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initNavMotion();
   initMobileMenu();
+  initScrollProgress();
   initScrollHint();
   initQuickBottomPrompt();
 });
