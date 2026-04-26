@@ -6,6 +6,11 @@
       "permanent": true
     },
     {
+      "source": "/license/",
+      "destination": "/licence",
+      "permanent": true
+    },
+    {
       "source": "/license.html",
       "destination": "/licence",
       "permanent": true
@@ -14,7 +19,11 @@
   "rewrites": [
     {
       "source": "/licence",
-      "destination": "/licence/index.html"
+      "destination": "/licence.html"
+    },
+    {
+      "source": "/licence/",
+      "destination": "/licence.html"
     }
   ]
 }
