@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="License information for freeperr.dev">
+  <title>License | Freeperr</title>
+  <link rel="icon" type="image/png" href="fawicon.png">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --accent: #3b82f6;
+      font-family: "Inter", "SF Pro Display", system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      padding: clamp(14px, 3vw, 28px);
+      line-height: 1.55;
+    }
+
+    .panel {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: clamp(14px, 4vw, 32px);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(24px, 5vw, 34px);
+      letter-spacing: -0.02em;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      background: #fff;
+    }
+
+    .button.primary {
+      color: #fff;
+      background: var(--text);
+      border-color: var(--text);
+    }
+
+    .hint {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: clamp(12px, 3vw, 18px);
+      max-height: 75vh;
+      overflow: auto;
+      font-size: clamp(13px, 2.8vw, 15px);
+    }
+  </style>
+</head>
+<body>
+  <main class="panel">
+    <div class="topbar">
+      <h1>License</h1>
+      <div class="actions">
+        <a class="button" href="/">Back to site</a>
+        <a class="button primary" href="/LICENSE" target="_blank" rel="noopener noreferrer">Open raw LICENSE</a>
+      </div>
+    </div>
+    <p class="hint">This page shows the exact content of the LICENSE file used on freeperr.dev.</p>
+    <pre id="license-content">Loading LICENSE...</pre>
+  </main>
+
+  <script>
+    (async function loadLicense() {
+      const output = document.getElementById('license-content');
+      const candidates = ['/LICENSE', 'LICENSE', './LICENSE'];
+
+      for (const url of candidates) {
+        try {
+          const res = await fetch(url, { cache: 'no-store' });
+          if (!res.ok) continue;
+          const text = await res.text();
+          if (text.trim()) {
+            output.textContent = text;
+            return;
+          }
+        } catch (_) {
+          // try next candidate
+        }
+      }
+
+      output.textContent = 'Could not load LICENSE automatically. Use "Open raw LICENSE" above.';
+    })();
+  </script>
+</body>
+</html>
