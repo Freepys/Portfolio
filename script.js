@@ -29,20 +29,51 @@ function attachCopyButtons() {
       if (!handle) return;
 
       const defaultLabel = btn.getAttribute('data-default') || btn.textContent;
+      const defaultMarkup = btn.innerHTML;
+      const hasIcon = !!btn.querySelector('svg');
+      const defaultAriaLabel = btn.getAttribute('aria-label');
 
       try {
         await navigator.clipboard.writeText(handle);
-        btn.textContent = '\u2713 Copied!';
+        if (hasIcon) {
+          btn.setAttribute('aria-label', 'Copied Discord handle');
+        } else {
+          btn.textContent = '\u2713 Copied!';
+        }
         btn.classList.add('copied');
 
         setTimeout(() => {
-          btn.textContent = defaultLabel;
+          if (hasIcon) {
+            btn.innerHTML = defaultMarkup;
+            if (defaultAriaLabel) {
+              btn.setAttribute('aria-label', defaultAriaLabel);
+            } else {
+              btn.removeAttribute('aria-label');
+            }
+          } else {
+            btn.textContent = defaultLabel;
+          }
           btn.classList.remove('copied');
         }, 2000);
       } catch (err) {
         console.error('Failed to copy:', err);
-        btn.textContent = 'Error!';
-        setTimeout(() => (btn.textContent = defaultLabel), 2000);
+        if (hasIcon) {
+          btn.setAttribute('aria-label', 'Failed to copy Discord handle');
+        } else {
+          btn.textContent = 'Error!';
+        }
+        setTimeout(() => {
+          if (hasIcon) {
+            btn.innerHTML = defaultMarkup;
+            if (defaultAriaLabel) {
+              btn.setAttribute('aria-label', defaultAriaLabel);
+            } else {
+              btn.removeAttribute('aria-label');
+            }
+          } else {
+            btn.textContent = defaultLabel;
+          }
+        }, 2000);
       }
     });
   });
