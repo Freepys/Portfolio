@@ -2,18 +2,46 @@
  * Fades in avatar image once it's actually loaded.
  */
 function initImageFadeIn() {
-  const images = document.querySelectorAll('.avatar img');
+  const avatars = document.querySelectorAll('.avatar');
 
-  images.forEach((img) => {
-    const reveal = () => requestAnimationFrame(() => img.classList.add('loaded'));
-
-    if (img.complete && img.naturalWidth > 0) {
-      reveal();
+  avatars.forEach((avatar) => {
+    const img = avatar.querySelector('img');
+    if (!img) {
       return;
     }
 
+    let timeoutId;
+
+    const clearLoadingState = () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+        timeoutId = undefined;
+      }
+      img.classList.remove('is-loading');
+    };
+
+    const reveal = () => {
+      clearLoadingState();
+      avatar.classList.remove('has-error');
+      requestAnimationFrame(() => img.classList.add('loaded'));
+    };
+
+    const showError = () => {
+      clearLoadingState();
+      img.classList.remove('loaded');
+      avatar.classList.add('has-error');
+    };
+
+    if (img.complete && img.naturalWidth > 0) {
+      img.classList.add('loaded');
+      return;
+    }
+
+    img.classList.add('is-loading');
+    timeoutId = window.setTimeout(showError, 10000);
+
     img.addEventListener('load', reveal, { once: true });
-    img.addEventListener('error', () => img.classList.add('loaded'), { once: true });
+    img.addEventListener('error', showError, { once: true });
   });
 }
 

@@ -188,12 +188,41 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
+  display: block;
   transition: opacity 520ms var(--ease-smooth), transform 900ms var(--ease-apple);
+}
+
+.avatar img.is-loading {
+  opacity: 0;
 }
 
 .avatar img.loaded {
   opacity: 1;
+}
+
+.avatar-error {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #b91c1c;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(254, 226, 226, 0.96));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.avatar.has-error .avatar-error {
+  opacity: 1;
+}
+
+.avatar.has-error img {
+  opacity: 0;
 }
 
 .avatar:hover img { transform: scale(1.05); }
