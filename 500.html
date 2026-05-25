@@ -8,25 +8,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="/fawicon.png">
-  <link rel="stylesheet" href="/error.css">
+  <link rel="icon" type="image/png" href="fawicon.png">
+  <link rel="stylesheet" href="error.css">
 </head>
 <body>
-  <main class="error-shell">
-    <div class="error-shape one" aria-hidden="true"></div>
-    <div class="error-shape two" aria-hidden="true"></div>
-    <section class="error-card" aria-labelledby="error-title">
-      <p class="error-badge">Server Error</p>
+  <div class="background" aria-hidden="true">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  <main class="error-page">
+    <section class="error-content" aria-labelledby="error-title">
       <p class="error-code">500</p>
       <h1 class="error-title" id="error-title">Something went wrong</h1>
       <p class="error-message">The request could not be completed because the server ran into an unexpected issue. Please try again in a moment or return to the main site.</p>
       <div class="error-actions">
         <a class="button primary" href="/">Return to main site</a>
-        <a class="button secondary" href="javascript:location.reload()">Try again</a>
-      </div>
-      <div class="error-meta" aria-label="Helpful hints">
-        <span class="error-pill">Temporary failure</span>
-        <span class="error-pill">Refresh may help</span>
+        <a class="button ghost" href="javascript:location.reload()">Try again</a>
       </div>
     </section>
   </main>

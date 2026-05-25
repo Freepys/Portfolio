@@ -1,13 +1,16 @@
 :root {
   --bg: #f8fafc;
-  --card: rgba(255, 255, 255, 0.86);
+  --card: #ffffff;
   --text: #0f172a;
   --muted: #64748b;
   --accent: #3b82f6;
   --accent-2: #8b5cf6;
-  --border: rgba(226, 232, 240, 0.9);
-  --shadow: 0 25px 60px rgba(15, 23, 42, 0.12);
-  --shadow-soft: 0 10px 30px rgba(59, 130, 246, 0.12);
+  --border: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --max: 1200px;
+  --ease-apple: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-smooth: cubic-bezier(0.2, 0.8, 0.2, 1);
   font-family: "Inter", "SF Pro Display", system-ui, -apple-system, sans-serif;
 }
 
@@ -18,177 +21,167 @@
 }
 
 body {
-  min-height: 100vh;
-  overflow: hidden;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.05) 0px, transparent 50%);
   color: var(--text);
-  background:
-    radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 34%),
-    radial-gradient(circle at 85% 20%, rgba(139, 92, 246, 0.16), transparent 26%),
-    linear-gradient(180deg, #f8fafc 0%, #eef4ff 100%);
-}
-
-.error-shell {
-  position: relative;
   min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  isolation: isolate;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-.error-shape {
-  position: absolute;
-  border-radius: 999px;
+.background .shape {
+  position: fixed;
+  border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.7;
+  opacity: 0.4;
   z-index: -1;
-  animation: drift 14s ease-in-out infinite;
+  pointer-events: none;
+  will-change: transform;
 }
 
-.error-shape.one {
-  width: 320px;
-  height: 320px;
-  top: -60px;
-  left: -40px;
-  background: rgba(59, 130, 246, 0.22);
+.shape-1 {
+  width: 400px;
+  height: 400px;
+  background: #dbeafe;
+  top: -100px;
+  left: -50px;
+  animation: floaty 15s ease-in-out infinite;
 }
 
-.error-shape.two {
-  width: 280px;
-  height: 280px;
-  right: -30px;
-  bottom: 2%;
-  background: rgba(139, 92, 246, 0.2);
-  animation-direction: reverse;
+.shape-2 {
+  width: 350px;
+  height: 350px;
+  background: #ede9fe;
+  bottom: 5%;
+  right: -50px;
+  animation: floaty 18s ease-in-out infinite reverse;
 }
 
-.error-card {
-  width: min(720px, 100%);
-  padding: 40px;
-  border: 1px solid var(--border);
-  border-radius: 32px;
-  background: var(--card);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  box-shadow: var(--shadow);
+.shape-3 {
+  width: 250px;
+  height: 250px;
+  background: #f1f5f9;
+  top: 50%;
+  left: 30%;
+  transform: translate(-20%, -10%);
+  animation: floaty 20s ease-in-out infinite;
 }
 
-.error-badge {
-  display: inline-flex;
+.error-page {
+  max-width: var(--max);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 120px 20px 80px;
+  display: grid;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(191, 219, 254, 0.9);
-  color: var(--accent);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+}
+
+.error-content {
+  max-width: 760px;
 }
 
 .error-code {
-  font-size: clamp(76px, 18vw, 144px);
-  line-height: 0.95;
+  font-size: clamp(80px, 18vw, 160px);
+  line-height: 0.9;
   letter-spacing: -0.08em;
   font-weight: 900;
   margin-bottom: 18px;
 }
 
 .error-title {
-  font-size: clamp(30px, 6vw, 52px);
+  font-size: clamp(34px, 6vw, 64px);
   line-height: 1.05;
+  font-weight: 900;
   letter-spacing: -0.05em;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .error-message {
-  max-width: 560px;
+  max-width: 620px;
+  font-size: clamp(17px, 2vw, 21px);
   color: var(--muted);
-  font-size: clamp(16px, 2.3vw, 19px);
-  line-height: 1.7;
+  margin-bottom: 32px;
 }
 
 .error-actions {
   display: flex;
+  gap: 12px;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 32px;
 }
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 52px;
-  padding: 14px 22px;
-  border-radius: 16px;
-  border: 1px solid var(--border);
+  padding: 14px 28px;
+  border-radius: 14px;
   text-decoration: none;
-  font-weight: 800;
-  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease, background-color 240ms ease, color 240ms ease;
+  font-weight: 700;
+  font-size: 15px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 320ms var(--ease-apple), box-shadow 320ms var(--ease-apple), border-color 250ms var(--ease-smooth), background-color 250ms var(--ease-smooth), color 250ms var(--ease-smooth);
+  will-change: transform;
 }
 
 .button:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-soft);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: var(--shadow-lg);
+  border-color: #cbd5e1;
 }
 
 .button.primary {
-  background: #0f172a;
+  background: var(--text);
   color: #fff;
-  border-color: #0f172a;
+  border: none;
 }
 
-.button.secondary {
-  background: rgba(255, 255, 255, 0.8);
-  color: var(--text);
+.button.primary:hover {
+  background: #1e293b;
 }
 
-.error-meta {
-  margin-top: 26px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.button.ghost {
+  background: transparent;
+  border: 2px solid var(--border);
 }
 
-.error-pill {
-  padding: 9px 13px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 700;
+.button.ghost:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
 }
 
-@keyframes drift {
+@keyframes floaty {
   0%, 100% {
     transform: translateY(0) scale(1);
   }
   50% {
-    transform: translateY(-18px) scale(1.06);
+    transform: translateY(-20px) scale(1.05);
   }
 }
 
-@media (max-width: 640px) {
-  body {
-    overflow: auto;
+@media (max-width: 680px) {
+  .error-page {
+    padding: 96px 18px 64px;
   }
+}
 
-  .error-card {
-    padding: 28px 22px;
-    border-radius: 24px;
+@media (max-width: 540px) {
+  .error-page {
+    padding: 74px 16px 52px;
   }
 
   .error-actions {
-    flex-direction: column;
+    width: 100%;
   }
 
   .button {
     width: 100%;
+    min-height: 44px;
   }
 }
 
@@ -197,5 +190,11 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .shape-1,
+  .shape-2,
+  .shape-3 {
+    transform: none !important;
   }
 }
