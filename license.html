@@ -1,49 +1,305 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="License information for freeperr.dev">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="License information for freeperr.dev" />
   <title>License | Freeperr</title>
-  <link rel="icon" type="image/png" href="fawicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="error.css">
+
+  <link rel="icon" type="image/png" href="fawicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
-    .license-content {
-      max-width: 860px;
+    :root {
+      --bg: #f8fafc;
+      --card: rgba(255, 255, 255, 0.72);
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #3b82f6;
+      --border: rgba(255, 255, 255, 0.35);
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --shadow-xl: 0 25px 60px rgba(15, 23, 42, 0.12);
+      --radius: 32px;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(59,130,246,.12), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(139,92,246,.12), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .background {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .shape {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(90px);
+      opacity: .5;
+      animation: floaty 18s ease-in-out infinite;
+    }
+
+    .shape-1 {
+      width: 420px;
+      height: 420px;
+      background: #dbeafe;
+      top: -120px;
+      left: -80px;
+    }
+
+    .shape-2 {
+      width: 360px;
+      height: 360px;
+      background: #ede9fe;
+      right: -80px;
+      bottom: 5%;
+      animation-direction: reverse;
+    }
+
+    .shape-3 {
+      width: 280px;
+      height: 280px;
+      background: #bfdbfe;
+      left: 35%;
+      top: 45%;
+    }
+
+    main {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .license-shell {
       width: 100%;
+      max-width: 1180px;
+      animation: intro 1s cubic-bezier(.22,1,.36,1);
+    }
+
+    .license-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .license-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 12px;
     }
 
     .license-title {
-      font-size: clamp(80px, 18vw, 160px);
-      line-height: 0.9;
-      letter-spacing: -0.08em;
+      font-size: clamp(72px, 12vw, 148px);
+      line-height: .88;
       font-weight: 900;
-      margin-bottom: 18px;
+      letter-spacing: -.08em;
     }
 
-    .license-message {
-      max-width: 660px;
-      font-size: clamp(17px, 2vw, 21px);
+    .license-description {
+      max-width: 620px;
+      margin-top: 14px;
       color: var(--muted);
-      margin-bottom: 28px;
+      font-size: clamp(15px, 2vw, 18px);
+      line-height: 1.7;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      height: 52px;
+      padding: 0 22px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.35);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 15px;
+      transition: .25s ease;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button.primary {
+      background: #0f172a;
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .button.ghost {
+      background: rgba(255,255,255,.6);
+      color: var(--text);
+    }
+
+    .license-window {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+      backdrop-filter: blur(28px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .license-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 22px;
+      border-bottom: 1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.45);
+      backdrop-filter: blur(12px);
+    }
+
+    .traffic {
+      display: flex;
+      gap: 8px;
+    }
+
+    .traffic span {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+    }
+
+    .traffic span:nth-child(1) {
+      background: #ef4444;
+    }
+
+    .traffic span:nth-child(2) {
+      background: #f59e0b;
+    }
+
+    .traffic span:nth-child(3) {
+      background: #10b981;
+    }
+
+    .license-file {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
     }
 
     .license-text {
-      margin: 0 0 32px;
+      margin: 0;
+      padding: 34px;
+      max-height: 72vh;
+      overflow: auto;
       white-space: pre-wrap;
       word-break: break-word;
-      overflow-wrap: anywhere;
-      background: transparent;
-      border: 0;
-      padding: 0;
-      max-height: none;
-      overflow: visible;
-      font-size: clamp(13px, 2.8vw, 15px);
-      color: var(--text);
-      max-width: 760px;
+      font-size: 14px;
+      line-height: 1.9;
+      color: #0f172a;
+      font-family: "SF Mono", "Consolas", monospace;
+    }
+
+    .license-text::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .license-text::-webkit-scrollbar-thumb {
+      background: rgba(148,163,184,.55);
+      border-radius: 999px;
+    }
+
+    .fade-bottom {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 90px;
+      pointer-events: none;
+      background: linear-gradient(to bottom, transparent, rgba(248,250,252,.92));
+    }
+
+    @keyframes floaty {
+      0%,100% {
+        transform: translateY(0px) scale(1);
+      }
+      50% {
+        transform: translateY(-24px) scale(1.06);
+      }
+    }
+
+    @keyframes intro {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(.985);
+        filter: blur(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @media (max-width: 720px) {
+      main {
+        padding: 18px;
+      }
+
+      .license-header {
+        align-items: flex-start;
+      }
+
+      .actions {
+        width: 100%;
+      }
+
+      .button {
+        flex: 1;
+      }
+
+      .license-text {
+        padding: 24px;
+        font-size: 13px;
+        max-height: 68vh;
+      }
+
+      .license-window {
+        border-radius: 24px;
+      }
     }
   </style>
 </head>
@@ -53,15 +309,44 @@
     <div class="shape shape-2"></div>
     <div class="shape shape-3"></div>
   </div>
-  <main class="error-page license-page">
-    <section class="error-content license-content" aria-labelledby="license-title">
-      <p class="license-title" id="license-title">License</p>
-      <p class="license-message">This page shows the exact content of the LICENSE file used on freeperr.dev, without wrapping it in a card so it can breathe like the error pages.</p>
-      <div class="error-actions">
-        <a class="button primary" href="/">Return to main site</a>
-        <a class="button ghost" href="/LICENSE" target="_blank" rel="noopener noreferrer">Open raw LICENSE</a>
+
+  <main>
+    <section class="license-shell">
+      <div class="license-header">
+        <div>
+          <p class="license-kicker">Open Source</p>
+          <h1 class="license-title">License</h1>
+          <p class="license-description">
+            The exact LICENSE file used on freeperr.dev — readable, clean and fully accessible in a modern fullpage layout.
+          </p>
+        </div>
+
+        <div class="actions">
+          <a class="button ghost" href="/">Return Home</a>
+          <a class="button ghost" href="/LICENSE" target="_blank" rel="noopener noreferrer">
+            Open Raw
+          </a>
+          <button class="button primary" id="copy-license">
+            Copy License
+          </button>
+        </div>
       </div>
-      <pre id="license-content" class="license-text">Loading LICENSE...</pre>
+
+      <div class="license-window">
+        <div class="license-topbar">
+          <div class="traffic">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <p class="license-file">LICENSE</p>
+        </div>
+
+        <pre id="license-content" class="license-text">Loading LICENSE...</pre>
+
+        <div class="fade-bottom"></div>
+      </div>
     </section>
   </main>
 
@@ -74,18 +359,36 @@
         try {
           const res = await fetch(url, { cache: 'no-store' });
           if (!res.ok) continue;
+
           const text = await res.text();
+
           if (text.trim()) {
             output.textContent = text;
             return;
           }
-        } catch (_) {
-          // try next candidate
-        }
+        } catch (_) {}
       }
 
-      output.textContent = 'Could not load LICENSE automatically. Use "Open raw LICENSE" above.';
+      output.textContent = 'Could not load LICENSE automatically.';
     })();
+
+    document
+      .getElementById('copy-license')
+      ?.addEventListener('click', async () => {
+        const text = document.getElementById('license-content').textContent;
+
+        await navigator.clipboard.writeText(text);
+
+        const button = document.getElementById('copy-license');
+        const original = button.textContent;
+
+        button.textContent = 'Copied';
+
+        setTimeout(() => {
+          button.textContent = original;
+        }, 1800);
+      });
   </script>
 </body>
 </html>
+```
