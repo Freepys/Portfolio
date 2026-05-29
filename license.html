@@ -6,109 +6,63 @@
   <meta name="description" content="License information for freeperr.dev">
   <title>License | Freeperr</title>
   <link rel="icon" type="image/png" href="fawicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="error.css">
   <style>
-    :root {
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text: #0f172a;
-      --muted: #64748b;
-      --border: #e2e8f0;
-      --accent: #3b82f6;
-      font-family: "Inter", "SF Pro Display", system-ui, -apple-system, sans-serif;
+    .license-content {
+      max-width: 860px;
+      width: 100%;
     }
 
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      padding: clamp(14px, 3vw, 28px);
-      line-height: 1.55;
+    .license-title {
+      font-size: clamp(80px, 18vw, 160px);
+      line-height: 0.9;
+      letter-spacing: -0.08em;
+      font-weight: 900;
+      margin-bottom: 18px;
     }
 
-    .panel {
-      max-width: 980px;
-      margin: 0 auto;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: clamp(14px, 4vw, 32px);
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(24px, 5vw, 34px);
-      letter-spacing: -0.02em;
-    }
-
-    .actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 42px;
-      padding: 10px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 700;
-      background: #fff;
-    }
-
-    .button.primary {
-      color: #fff;
-      background: var(--text);
-      border-color: var(--text);
-    }
-
-    .hint {
-      margin: 0 0 14px;
+    .license-message {
+      max-width: 660px;
+      font-size: clamp(17px, 2vw, 21px);
       color: var(--muted);
-      font-size: 14px;
+      margin-bottom: 28px;
     }
 
-    pre {
-      margin: 0;
+    .license-text {
+      margin: 0 0 32px;
       white-space: pre-wrap;
       word-break: break-word;
       overflow-wrap: anywhere;
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: clamp(12px, 3vw, 18px);
-      max-height: 75vh;
-      overflow: auto;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      max-height: none;
+      overflow: visible;
       font-size: clamp(13px, 2.8vw, 15px);
+      color: var(--text);
+      max-width: 760px;
     }
   </style>
 </head>
 <body>
-  <main class="panel">
-    <div class="topbar">
-      <h1>License</h1>
-      <div class="actions">
-        <a class="button" href="/">Back to site</a>
-        <a class="button primary" href="/LICENSE" target="_blank" rel="noopener noreferrer">Open raw LICENSE</a>
+  <div class="background" aria-hidden="true">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  <main class="error-page license-page">
+    <section class="error-content license-content" aria-labelledby="license-title">
+      <p class="license-title" id="license-title">License</p>
+      <p class="license-message">This page shows the exact content of the LICENSE file used on freeperr.dev, without wrapping it in a card so it can breathe like the error pages.</p>
+      <div class="error-actions">
+        <a class="button primary" href="/">Return to main site</a>
+        <a class="button ghost" href="/LICENSE" target="_blank" rel="noopener noreferrer">Open raw LICENSE</a>
       </div>
-    </div>
-    <p class="hint">This page shows the exact content of the LICENSE file used on freeperr.dev.</p>
-    <pre id="license-content">Loading LICENSE...</pre>
+      <pre id="license-content" class="license-text">Loading LICENSE...</pre>
+    </section>
   </main>
 
   <script>
