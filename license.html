@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="description" content="License information for freeperr.dev" />
-  <title>License | Freeperr</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
 
-  <link rel="icon" type="image/png" href="fawicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <title>License | Freeperr</title>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
@@ -17,16 +16,25 @@
 
   <style>
     :root {
-      --bg: #f8fafc;
+      --bg: #f6f8fc;
       --card: rgba(255, 255, 255, 0.72);
       --text: #0f172a;
       --muted: #64748b;
-      --accent: #3b82f6;
-      --border: rgba(255, 255, 255, 0.35);
-      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-      --shadow-xl: 0 25px 60px rgba(15, 23, 42, 0.12);
-      --radius: 32px;
-      font-family: "Inter", system-ui, sans-serif;
+      --accent: #2563eb;
+      --border: rgba(255,255,255,.4);
+
+      --shadow:
+        0 10px 30px rgba(15,23,42,.08);
+
+      --shadow-xl:
+        0 30px 80px rgba(15,23,42,.12);
+
+      --radius: 34px;
+
+      font-family:
+        "Inter",
+        system-ui,
+        sans-serif;
     }
 
     * {
@@ -35,16 +43,32 @@
       padding: 0;
     }
 
+    html,
     body {
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at top left, rgba(59,130,246,.12), transparent 32%),
-        radial-gradient(circle at bottom right, rgba(139,92,246,.12), transparent 30%),
-        var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
     }
+
+    body {
+      position: relative;
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(59,130,246,.12),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          rgba(139,92,246,.10),
+          transparent 26%
+        ),
+        var(--bg);
+
+      color: var(--text);
+    }
+
+    /* BACKGROUND */
 
     .background {
       position: fixed;
@@ -57,7 +81,7 @@
       position: absolute;
       border-radius: 999px;
       filter: blur(90px);
-      opacity: .5;
+      opacity: .55;
       animation: floaty 18s ease-in-out infinite;
     }
 
@@ -79,59 +103,77 @@
     }
 
     .shape-3 {
-      width: 280px;
-      height: 280px;
+      width: 260px;
+      height: 260px;
       background: #bfdbfe;
-      left: 35%;
-      top: 45%;
+      left: 38%;
+      top: 44%;
     }
 
+    /* LAYOUT */
+
     main {
-      min-height: 100vh;
+      width: 100%;
+      height: 100vh;
+
+      padding: 28px;
+
       display: flex;
-      align-items: center;
       justify-content: center;
-      padding: 40px 20px;
+      align-items: center;
     }
 
     .license-shell {
       width: 100%;
-      max-width: 1180px;
-      animation: intro 1s cubic-bezier(.22,1,.36,1);
+      max-width: 1250px;
+
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      animation:
+        intro .9s cubic-bezier(.22,1,.36,1);
     }
+
+    /* HEADER */
 
     .license-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      gap: 24px;
-      margin-bottom: 28px;
+      gap: 30px;
       flex-wrap: wrap;
     }
 
     .license-kicker {
       font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: .22em;
+      letter-spacing: .24em;
       font-weight: 800;
       color: var(--accent);
       margin-bottom: 12px;
     }
 
     .license-title {
-      font-size: clamp(72px, 12vw, 148px);
+      font-size: clamp(62px, 9vw, 118px);
       line-height: .88;
       font-weight: 900;
       letter-spacing: -.08em;
     }
 
     .license-description {
-      max-width: 620px;
       margin-top: 14px;
+      max-width: 620px;
+
       color: var(--muted);
-      font-size: clamp(15px, 2vw, 18px);
+
+      font-size: 17px;
       line-height: 1.7;
     }
+
+    /* BUTTONS */
 
     .actions {
       display: flex;
@@ -140,18 +182,26 @@
     }
 
     .button {
-      height: 52px;
+      height: 54px;
+
       padding: 0 22px;
-      border-radius: 16px;
+
+      border-radius: 18px;
       border: 1px solid rgba(255,255,255,.35);
+
       text-decoration: none;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
+
       font-size: 15px;
-      transition: .25s ease;
+      font-weight: 700;
+
       cursor: pointer;
+
+      transition: .22s ease;
+
       backdrop-filter: blur(12px);
     }
 
@@ -166,17 +216,31 @@
     }
 
     .button.ghost {
-      background: rgba(255,255,255,.6);
+      background: rgba(255,255,255,.62);
       color: var(--text);
     }
 
+    /* LICENSE WINDOW */
+
     .license-window {
       position: relative;
-      border-radius: var(--radius);
+
+      flex: 1;
+      min-height: 0;
+
+      display: flex;
+      flex-direction: column;
+
       overflow: hidden;
+
+      border-radius: var(--radius);
+
       border: 1px solid var(--border);
+
       background: var(--card);
+
       backdrop-filter: blur(28px);
+
       box-shadow: var(--shadow-xl);
     }
 
@@ -184,9 +248,15 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 18px 22px;
-      border-bottom: 1px solid rgba(255,255,255,.35);
-      background: rgba(255,255,255,.45);
+
+      padding: 18px 24px;
+
+      border-bottom:
+        1px solid rgba(255,255,255,.35);
+
+      background:
+        rgba(255,255,255,.42);
+
       backdrop-filter: blur(12px);
     }
 
@@ -216,20 +286,33 @@
     .license-file {
       color: var(--muted);
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
+    /* LICENSE TEXT */
+
     .license-text {
-      margin: 0;
-      padding: 34px;
-      max-height: 72vh;
+      flex: 1;
+
       overflow: auto;
+
+      padding:
+        34px
+        38px
+        90px;
+
       white-space: pre-wrap;
       word-break: break-word;
+
       font-size: 14px;
       line-height: 1.9;
+
       color: #0f172a;
-      font-family: "SF Mono", "Consolas", monospace;
+
+      font-family:
+        "SF Mono",
+        "Consolas",
+        monospace;
     }
 
     .license-text::-webkit-scrollbar {
@@ -237,49 +320,91 @@
     }
 
     .license-text::-webkit-scrollbar-thumb {
-      background: rgba(148,163,184,.55);
+      background:
+        rgba(148,163,184,.55);
+
       border-radius: 999px;
     }
 
     .fade-bottom {
       position: absolute;
+
       left: 0;
       right: 0;
       bottom: 0;
-      height: 90px;
+
+      height: 100px;
+
       pointer-events: none;
-      background: linear-gradient(to bottom, transparent, rgba(248,250,252,.92));
+
+      background:
+        linear-gradient(
+          to bottom,
+          transparent,
+          rgba(246,248,252,.96)
+        );
     }
+
+    /* ANIMATIONS */
 
     @keyframes floaty {
       0%,100% {
-        transform: translateY(0px) scale(1);
+        transform:
+          translateY(0px)
+          scale(1);
       }
+
       50% {
-        transform: translateY(-24px) scale(1.06);
+        transform:
+          translateY(-24px)
+          scale(1.05);
       }
     }
 
     @keyframes intro {
       from {
         opacity: 0;
-        transform: translateY(30px) scale(.985);
+
+        transform:
+          translateY(30px)
+          scale(.985);
+
         filter: blur(10px);
       }
+
       to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+
+        transform:
+          translateY(0)
+          scale(1);
+
         filter: blur(0);
       }
     }
 
+    /* MOBILE */
+
     @media (max-width: 720px) {
       main {
-        padding: 18px;
+        padding: 14px;
+      }
+
+      .license-shell {
+        gap: 16px;
       }
 
       .license-header {
         align-items: flex-start;
+      }
+
+      .license-title {
+        font-size:
+          clamp(44px, 16vw, 72px);
+      }
+
+      .license-description {
+        font-size: 14px;
       }
 
       .actions {
@@ -290,20 +415,24 @@
         flex: 1;
       }
 
-      .license-text {
-        padding: 24px;
-        font-size: 13px;
-        max-height: 68vh;
+      .license-window {
+        border-radius: 26px;
       }
 
-      .license-window {
-        border-radius: 24px;
+      .license-text {
+        padding:
+          24px
+          24px
+          80px;
+
+        font-size: 13px;
       }
     }
   </style>
 </head>
+
 <body>
-  <div class="background" aria-hidden="true">
+  <div class="background">
     <div class="shape shape-1"></div>
     <div class="shape shape-2"></div>
     <div class="shape shape-3"></div>
@@ -311,27 +440,46 @@
 
   <main>
     <section class="license-shell">
+
       <div class="license-header">
         <div>
-          <p class="license-kicker">Open Source</p>
-          <h1 class="license-title">License</h1>
+          <p class="license-kicker">
+            Open Source
+          </p>
+
+          <h1 class="license-title">
+            License
+          </h1>
+
           <p class="license-description">
             The exact LICENSE file used on freeperr.dev
           </p>
         </div>
 
         <div class="actions">
-          <a class="button ghost" href="/">Return Home</a>
-          <a class="button ghost" href="/LICENSE" target="_blank" rel="noopener noreferrer">
+          <a class="button ghost" href="/">
+            Return Home
+          </a>
+
+          <a
+            class="button ghost"
+            href="/LICENSE"
+            target="_blank"
+          >
             Open Raw
           </a>
-          <button class="button primary" id="copy-license">
+
+          <button
+            class="button primary"
+            id="copy-license"
+          >
             Copy License
           </button>
         </div>
       </div>
 
       <div class="license-window">
+
         <div class="license-topbar">
           <div class="traffic">
             <span></span>
@@ -339,24 +487,43 @@
             <span></span>
           </div>
 
-          <p class="license-file">LICENSE</p>
+          <p class="license-file">
+            LICENSE
+          </p>
         </div>
 
-        <pre id="license-content" class="license-text">Loading LICENSE...</pre>
+        <pre
+          id="license-content"
+          class="license-text"
+        >
+Loading LICENSE...
+        </pre>
 
         <div class="fade-bottom"></div>
       </div>
+
     </section>
   </main>
 
   <script>
     (async function loadLicense() {
-      const output = document.getElementById('license-content');
-      const candidates = ['/LICENSE', 'LICENSE', './LICENSE'];
+      const output =
+        document.getElementById(
+          "license-content"
+        );
+
+      const candidates = [
+        "/LICENSE",
+        "LICENSE",
+        "./LICENSE"
+      ];
 
       for (const url of candidates) {
         try {
-          const res = await fetch(url, { cache: 'no-store' });
+          const res = await fetch(url, {
+            cache: "no-store"
+          });
+
           if (!res.ok) continue;
 
           const text = await res.text();
@@ -368,25 +535,41 @@
         } catch (_) {}
       }
 
-      output.textContent = 'Could not load LICENSE automatically.';
+      output.textContent =
+        "Could not load LICENSE automatically.";
     })();
 
     document
-      .getElementById('copy-license')
-      ?.addEventListener('click', async () => {
-        const text = document.getElementById('license-content').textContent;
+      .getElementById("copy-license")
+      ?.addEventListener(
+        "click",
+        async () => {
+          const text =
+            document.getElementById(
+              "license-content"
+            ).textContent;
 
-        await navigator.clipboard.writeText(text);
+          await navigator.clipboard.writeText(
+            text
+          );
 
-        const button = document.getElementById('copy-license');
-        const original = button.textContent;
+          const button =
+            document.getElementById(
+              "copy-license"
+            );
 
-        button.textContent = 'Copied';
+          const original =
+            button.textContent;
 
-        setTimeout(() => {
-          button.textContent = original;
-        }, 1800);
-      });
+          button.textContent =
+            "Copied";
+
+          setTimeout(() => {
+            button.textContent =
+              original;
+          }, 1800);
+        }
+      );
   </script>
 </body>
 </html>
