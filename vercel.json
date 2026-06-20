@@ -55,6 +55,14 @@
     {
       "source": "/license/",
       "destination": "/license.html"
+    },
+    {
+      "source": "/clickthispls",
+      "destination": "/clickthispls/index.html"
+    },
+    {
+      "source": "/clickthispls/",
+      "destination": "/clickthispls/index.html"
     }
   ]
 }
