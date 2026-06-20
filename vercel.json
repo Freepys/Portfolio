@@ -29,6 +29,16 @@
       "source": "/licence.html",
       "destination": "/license",
       "permanent": true
+    },
+    {
+      "source": "/clickthispls",
+      "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "permanent": false
+    },
+    {
+      "source": "/clickthispls/",
+      "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -55,16 +65,6 @@
     {
       "source": "/license/",
       "destination": "/license.html"
-    },
-    {
-      "source": "/clickthispls",
-      "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      "permanent": false
-    },
-    {
-      "source": "/clickthispls/",
-      "destination": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      "permanent": false
     }
   ]
 }
