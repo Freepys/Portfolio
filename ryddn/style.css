@@ -1,0 +1,247 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: #000000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  position: relative;
+}
+
+.section-inner {
+  max-width: 720px;
+  width: 100%;
+  text-align: center;
+}
+
+.hero-text {
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.hero-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-text .delay-1 {
+  transition-delay: 0s;
+}
+
+.hero-text .delay-2 {
+  transition-delay: 0.4s;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.scroll-hint.show {
+  opacity: 1;
+}
+
+.scroll-hint span {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #999;
+  font-weight: 600;
+}
+
+.scroll-hint .arrow {
+  width: 10px;
+  height: 10px;
+  border-right: 1.5px solid #bbb;
+  border-bottom: 1.5px solid #bbb;
+  transform: rotate(45deg);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: rotate(45deg) translate(0, 0); }
+  50% { transform: rotate(45deg) translate(4px, 4px); }
+}
+
+.reveal-content {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-content p {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: #444;
+  line-height: 1.6;
+}
+
+.section-dark {
+  background: #000000;
+  color: #ffffff;
+}
+
+.section-dark .reveal-content p {
+  color: #aaa;
+}
+
+.big-brand {
+  font-size: clamp(4rem, 15vw, 10rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.big-brand .accent {
+  color: #5865f2;
+}
+
+.brand-sub {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: #888;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.discord-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2rem;
+  background: #5865f2;
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.discord-btn:hover {
+  background: #4752c4;
+  transform: translateY(-2px);
+}
+
+.discord-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.footer-note {
+  position: absolute;
+  bottom: 2rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.footer-note a {
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-note a:hover {
+  color: #5865f2;
+}
+
+.secret-hint {
+  position: fixed;
+  bottom: 1rem;
+  right: 1.2rem;
+  z-index: 100;
+  font-size: 0.6rem;
+  color: #ddd;
+  letter-spacing: 0.1em;
+  user-select: none;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.97);
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  backdrop-filter: blur(4px);
+  padding: 2rem;
+}
+
+.overlay.show {
+  display: flex;
+}
+
+.overlay h2 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 900;
+  color: #000;
+  margin-bottom: 1.5rem;
+}
+
+.overlay img {
+  max-width: 90vw;
+  max-height: 50vh;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.overlay p {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+canvas {
+  background: #7dd3fc;
+  display: block;
+  max-width: 90vw;
+  max-height: 75vh;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 2rem 1.5rem;
+  }
+}
