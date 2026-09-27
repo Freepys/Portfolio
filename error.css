@@ -1,200 +1,94 @@
 :root {
-  --bg: #f8fafc;
-  --card: #ffffff;
-  --text: #0f172a;
-  --muted: #64748b;
-  --accent: #3b82f6;
-  --accent-2: #8b5cf6;
-  --border: #e2e8f0;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --bg: #f6f8fb;
+  --bg-subtle: #e9edf2;
+  --border: #b8c3d1;
+  --border-strong: #73849a;
+  --text: #101b2d;
+  --text-secondary: #40516a;
+  --accent: #b8d84c;
+  --accent-tint: #edf6cc;
+  --font-sans: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "Cascadia Mono", monospace;
   --max: 1200px;
-  --ease-apple: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-smooth: cubic-bezier(0.2, 0.8, 0.2, 1);
-  font-family: "Inter", "SF Pro Display", system-ui, -apple-system, sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
 body {
-  background-color: var(--bg);
-  background-image:
-    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.05) 0px, transparent 50%);
+  min-width: 320px;
+  min-height: 100dvh;
+  background: var(--bg);
   color: var(--text);
-  min-height: 100vh;
-  line-height: 1.6;
-  overflow-x: hidden;
+  font-family: var(--font-sans);
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
 
-.background .shape {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.4;
-  z-index: -1;
-  pointer-events: none;
-  will-change: transform;
-}
-
-.shape-1 {
-  width: 400px;
-  height: 400px;
-  background: #dbeafe;
-  top: -100px;
-  left: -50px;
-  animation: floaty 15s ease-in-out infinite;
-}
-
-.shape-2 {
-  width: 350px;
-  height: 350px;
-  background: #ede9fe;
-  bottom: 5%;
-  right: -50px;
-  animation: floaty 18s ease-in-out infinite reverse;
-}
-
-.shape-3 {
-  width: 250px;
-  height: 250px;
-  background: #f1f5f9;
-  top: 50%;
-  left: 30%;
-  transform: translate(-20%, -10%);
-  animation: floaty 20s ease-in-out infinite;
-}
-
+.background { display: none; }
 .error-page {
-  max-width: var(--max);
-  min-height: 100vh;
+  width: min(100%, var(--max));
+  min-height: 100dvh;
   margin: 0 auto;
-  padding: 120px 20px 80px;
+  padding: clamp(28px, 7vw, 96px) 24px;
   display: grid;
   align-items: center;
 }
-
 .error-content {
   max-width: 760px;
+  padding: clamp(30px, 6vw, 64px);
+  border: 1px solid var(--border-strong);
+  border-left: 8px solid var(--accent);
+  background: rgba(255, 255, 255, .32);
 }
-
 .error-code {
-  font-size: clamp(80px, 18vw, 160px);
-  line-height: 0.9;
-  letter-spacing: -0.08em;
-  font-weight: 900;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .08em;
 }
-
+.error-code::before { content: "STATUS / "; color: var(--accent); }
 .error-title {
-  font-size: clamp(34px, 6vw, 64px);
-  line-height: 1.05;
-  font-weight: 900;
-  letter-spacing: -0.05em;
   margin-bottom: 20px;
+  font-size: clamp(2.7rem, 7vw, 5.5rem);
+  font-weight: 600;
+  line-height: .94;
+  letter-spacing: -.055em;
+  text-wrap: balance;
 }
-
 .error-message {
-  max-width: 620px;
-  font-size: clamp(17px, 2vw, 21px);
-  color: var(--muted);
+  max-width: 52ch;
   margin-bottom: 32px;
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 2vw, 1.1rem);
 }
-
-.error-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
+.error-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 28px;
-  border-radius: 14px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 15px;
-  border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--text);
-  cursor: pointer;
-  transition: transform 320ms var(--ease-apple), box-shadow 320ms var(--ease-apple), border-color 250ms var(--ease-smooth), background-color 250ms var(--ease-smooth), color 250ms var(--ease-smooth);
-  will-change: transform;
-}
-
-.button:hover {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: var(--shadow-lg);
-  border-color: #cbd5e1;
-}
-
-.button.primary {
-  background: var(--text);
-  color: #fff;
-  border: none;
-}
-
-.button.primary:hover {
-  background: #1e293b;
-}
-
-.button.ghost {
+  min-height: 42px;
+  padding: 10px 18px;
+  border: 1px solid var(--border-strong);
+  border-radius: 0;
   background: transparent;
-  border: 2px solid var(--border);
+  color: var(--text);
+  font-size: 14.5px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: color .15s ease, background .15s ease, border-color .15s ease, transform .15s ease;
 }
-
-.button.ghost:hover {
-  background: #f1f5f9;
-  border-color: #cbd5e1;
-}
-
-@keyframes floaty {
-  0%, 100% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-20px) scale(1.05);
-  }
-}
-
-@media (max-width: 680px) {
-  .error-page {
-    padding: 96px 18px 64px;
-  }
-}
+.button:hover { transform: translateY(-1px); border-color: var(--text); }
+.button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.button.primary { border-color: var(--text); background: var(--text); color: #fff; }
+.button.primary:hover { background: #000; border-color: #000; }
+.button.ghost:hover { background: var(--bg-subtle); }
 
 @media (max-width: 540px) {
-  .error-page {
-    padding: 74px 16px 52px;
-  }
-
-  .error-actions {
-    width: 100%;
-  }
-
-  .button {
-    width: 100%;
-    min-height: 44px;
-  }
+  .error-page { padding: 18px; }
+  .error-content { padding: 30px 24px; border-left-width: 5px; }
+  .error-actions, .button { width: 100%; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  .shape-1,
-  .shape-2,
-  .shape-3 {
-    transform: none !important;
-  }
-}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .01ms !important; } }
